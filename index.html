@@ -17,11 +17,13 @@
             color: white;
             font-family: Arial, sans-serif;
         }
+
         .logo {
             width: 150px; /* 根据需要调整logo大小 */
             margin-bottom: 20px;
         }
-         .download-button {
+
+        .download-button {
             background-color: #ffffff;
             color: #4a90e2;
             text-decoration: none;
@@ -30,6 +32,7 @@
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
+
         .download-button:hover {
             background-color: #4a90e2;
             color: white;
@@ -38,7 +41,8 @@
 </head>
 <body>
 
-    <img src="data:image/png;base64,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" alt="应用Logo" class="logo">
-<a href="itms-services://?action=download-manifest&url=https://mynamecool.github.io/testplist/ceshi.plist" class="download-button">点击安装应用</a>
- </body>
+<img src="icon.png" alt="应用Logo" class="logo">
+<a href="itms-services://?action=download-manifest&url=https://mynamecool.github.io/testplist/ceshi.plist"
+   class="download-button">点击安装应用</a>
+</body>
 </html>
