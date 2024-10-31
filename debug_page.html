@@ -3,18 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>获取用户代理</title>
+    <title>调试页面</title>
 </head>
 <body>
 <h1>用户代理信息</h1>
 <p id="user-agent"></p>
-
+<h1>当前位置</h1>
+<p id="location"></p>
+<h1>设备屏幕信息</h1>
+<p id="screen-info"></p>
 <script>
     // 获取用户代理信息
     const userAgent = navigator.userAgent;
 
     // 将用户代理信息输出到页面
     document.getElementById('user-agent').textContent = userAgent;
+
+    // 获取经纬度
+    function showPosition(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        document.getElementById('location').textContent = `纬度: ${latitude}, 经度: ${longitude}`;
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                document.getElementById('location').textContent = "用户拒绝了请求地理位置的权限。";
+                break;
+            case error.POSITION_UNAVAILABLE:
+                document.getElementById('location').textContent = "位置信息不可用。";
+                break;
+            case error.TIMEOUT:
+                document.getElementById('location').textContent = "请求地理位置超时。";
+                break;
+            case error.UNKNOWN_ERROR:
+                document.getElementById('location').textContent = "发生未知错误。";
+                break;
+        }
+    }
+
+    // 检查浏览器是否支持Geolocation API
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        document.getElementById('location').textContent = "此浏览器不支持地理位置服务。";
+    }
+
+    //获取设设备屏幕信息
+    function getScreenInfo() {
+        const screenWidth = window.screen.width * window.devicePixelRatio; // 屏幕宽度
+        const screenHeight = window.screen.height * window.devicePixelRatio; // 屏幕高度
+        const colorDepth = window.screen.colorDepth; // 颜色深度
+        const pixelDepth = window.screen.pixelDepth; // 像素深度
+
+        return `屏幕宽度: ${screenWidth}px, 屏幕高度: ${screenHeight}px, 颜色深度: ${colorDepth}-bit, 像素深度: ${pixelDepth}-bit`;
+    }
+
+    // 获取屏幕信息并输出到页面
+    document.getElementById('screen-info').textContent = getScreenInfo();
 </script>
 </body>
 </html>
