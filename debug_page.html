@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取用户代理</title>
+</head>
+<body>
+<h1>用户代理信息</h1>
+<p id="user-agent"></p>
+
+<script>
+    // 获取用户代理信息
+    const userAgent = navigator.userAgent;
+
+    // 将用户代理信息输出到页面
+    document.getElementById('user-agent').textContent = userAgent;
+</script>
+</body>
+</html>
