@@ -11,7 +11,7 @@
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>http://192.168.10.47:8000/</string>
+                    <string>http://192.168.10.47:5000/</string>
                 </dict>
             </array>
             <key>metadata</key>
